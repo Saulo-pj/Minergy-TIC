@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minergy TIC – Alertas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__inner u-between">
+        <div class="app-header__brand u-flex">
+          <button class="btn btn--ghost app-header__menu" id="btnMenu" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+          <div class="app-header__logo"><i class="fa-solid fa-helmet-safety"></i></div>
+          <div class="app-header__title">Minergy TIC</div>
+          <select class="app-header__select" aria-label="Seleccionar mina">
+            <option>Mina Volcan</option>
+            <option>Mina Cerro Azul</option>
+          </select>
+        </div>
+        <div class="app-header__actions u-flex">
+          <div class="app-header__icon" title="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge">3</span>
+          </div>
+          <img class="app-header__avatar" src="https://i.pravatar.cc/100?img=5" alt="Usuario" />
+          <div class="app-header__icon" title="Configuración"><a href="#" aria-label="Configuración"><i class="fa-solid fa-gear" style="color:#fff"></i></a></div>
+        </div>
+      </div>
+    </header>
+
+    <aside class="app-sidebar" id="sidebar">
+      <nav>
+        <ul class="app-sidebar__nav">
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./dashboard.html"><i class="app-sidebar__icon fa-solid fa-gauge"></i>Dashboard</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link app-sidebar__link--active" href="./alertas.html"><i class="app-sidebar__icon fa-solid fa-triangle-exclamation"></i>Alertas</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./mapa.html"><i class="app-sidebar__icon fa-solid fa-map"></i>Mapa</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./reportes.html"><i class="app-sidebar__icon fa-solid fa-chart-line"></i>Reportes</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-microchip"></i>Sensores</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./personal.html"><i class="app-sidebar__icon fa-solid fa-users"></i>Personal</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-gear"></i>Configuración</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-content">
+      <section class="card u-mb-16">
+        <div class="u-flex u-gap-8 u-wrap">
+          <button class="btn btn--dark btn--small" data-filter="*">Todas</button>
+          <button class="btn btn--danger btn--small" data-filter="critical">Críticas</button>
+          <button class="btn btn--warning btn--small" data-filter="medium">Medias</button>
+          <button class="btn btn--small" data-filter="resolved">Resueltas</button>
+        </div>
+      </section>
+
+      <section class="alerts" id="alertsList">
+        <!-- 5 tarjetas -->
+        <article class="alert-card alert-card--critical card" data-sev="critical">
+          <h3>#A-104 · Gas CO alto</h3>
+          <p>CO: 45 ppm · Sensor CO-17 · Túnel 3-B · Sector C</p>
+          <div class="alert-card__meta">30/10/2025 09:15</div>
+          <p>Personal cercano: J. Pérez (ID 342), M. Díaz (ID 298)</p>
+          <div class="alert-card__actions u-flex u-gap-8">
+            <button class="btn btn--dark btn--small" data-open-modal="detalleAlerta" data-id="A-104">Ver detalles</button>
+            <button class="btn btn--warning btn--small" data-toast="Notificación enviada">Notificar</button>
+            <button class="btn btn--success btn--small" data-resolver>Resolver</button>
+          </div>
+        </article>
+
+        <article class="alert-card alert-card--medium card" data-sev="medium">
+          <h3>#A-097 · Vibración anormal</h3>
+          <p>Vibración RMS: 12mm/s · S-VIB-05 · Túnel 2-A · Sector B</p>
+          <div class="alert-card__meta">30/10/2025 08:55</div>
+          <p>Personal cercano: L. Gómez (ID 121)</p>
+          <div class="alert-card__actions u-flex u-gap-8">
+            <button class="btn btn--dark btn--small" data-open-modal="detalleAlerta" data-id="A-097">Ver detalles</button>
+            <button class="btn btn--warning btn--small" data-toast="Ingeniería informada">Notificar</button>
+            <button class="btn btn--success btn--small" data-resolver>Resolver</button>
+          </div>
+        </article>
+
+        <article class="alert-card alert-card--info card" data-sev="info">
+          <h3>#A-083 · Mantenimiento programado</h3>
+          <p>Ventiladores Nivel 1 · 30/10 14:00</p>
+          <div class="alert-card__meta">30/10/2025 08:00</div>
+          <p>Personal asignado: K. Ramírez (ID 211)</p>
+          <div class="alert-card__actions u-flex u-gap-8">
+            <button class="btn btn--dark btn--small" data-open-modal="detalleAlerta" data-id="A-083">Ver detalles</button>
+            <button class="btn btn--warning btn--small" data-toast="Programación confirmada">Notificar</button>
+            <button class="btn btn--success btn--small" data-resolver>Resolver</button>
+          </div>
+        </article>
+
+        <article class="alert-card alert-card--critical card" data-sev="critical">
+          <h3>#A-076 · CH4 elevado</h3>
+          <p>CH4: 2.1% vol · Sensor CH4-03 · Túnel 1-C</p>
+          <div class="alert-card__meta">29/10/2025 22:41</div>
+          <p>Personal cercano: M. Rojas (ID 177), F. Ortega (ID 189)</p>
+          <div class="alert-card__actions u-flex u-gap-8">
+            <button class="btn btn--dark btn--small" data-open-modal="detalleAlerta" data-id="A-076">Ver detalles</button>
+            <button class="btn btn--warning btn--small" data-toast="Evacuación parcial">Notificar</button>
+            <button class="btn btn--success btn--small" data-resolver>Resolver</button>
+          </div>
+        </article>
+
+        <article class="alert-card alert-card--info card alert-card--resolved" data-sev="resolved">
+          <h3>#A-054 · Temperatura alta</h3>
+          <p>Temp: 38.4°C · T-S-22 · Túnel 2-B</p>
+          <div class="alert-card__meta">29/10/2025 18:05 · Resuelta</div>
+          <p>Acción: Aumento de ventilación</p>
+          <div class="alert-card__actions u-flex u-gap-8">
+            <button class="btn btn--dark btn--small" data-open-modal="detalleAlerta" data-id="A-054">Ver detalles</button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Modal reutilizado -->
+    <div class="modal" id="detalleAlerta">
+      <div class="modal__dialog">
+        <div class="modal__header">
+          <h3>Detalle de Alerta</h3>
+          <button class="btn btn--ghost" data-close-modal aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal__body" id="detalleAlertaBody"></div>
+        <div class="modal__footer">
+          <button class="btn btn--success" data-close-modal>Entendido</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="./dashboard.js" defer></script>
+  </body>
+  </html>

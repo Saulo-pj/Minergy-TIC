@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minergy TIC – Personal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__inner u-between">
+        <div class="app-header__brand u-flex">
+          <button class="btn btn--ghost app-header__menu" id="btnMenu" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+          <div class="app-header__logo"><i class="fa-solid fa-helmet-safety"></i></div>
+          <div class="app-header__title">Minergy TIC</div>
+          <select class="app-header__select" aria-label="Seleccionar mina">
+            <option>Mina Volcan</option>
+            <option>Mina Cerro Azul</option>
+          </select>
+        </div>
+        <div class="app-header__actions u-flex">
+          <div class="app-header__icon" title="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge">3</span>
+          </div>
+          <img class="app-header__avatar" src="https://i.pravatar.cc/100?img=2" alt="Usuario" />
+          <div class="app-header__icon" title="Configuración"><a href="#" aria-label="Configuración"><i class="fa-solid fa-gear" style="color:#fff"></i></a></div>
+        </div>
+      </div>
+    </header>
+
+    <aside class="app-sidebar" id="sidebar" aria-label="Barra lateral de navegación">
+      <nav>
+        <ul class="app-sidebar__nav">
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./dashboard.html"><i class="app-sidebar__icon fa-solid fa-gauge"></i>Dashboard</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./alertas.html"><i class="app-sidebar__icon fa-solid fa-triangle-exclamation"></i>Alertas</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./mapa.html"><i class="app-sidebar__icon fa-solid fa-map"></i>Mapa</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./reportes.html"><i class="app-sidebar__icon fa-solid fa-chart-line"></i>Reportes</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-microchip"></i>Sensores</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link app-sidebar__link--active" href="./personal.html"><i class="app-sidebar__icon fa-solid fa-users"></i>Personal</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-gear"></i>Configuración</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-content">
+      <!-- Barra superior -->
+      <section class="card u-mb-16 u-flex u-gap-12 u-wrap">
+        <div class="input input--search"><i class="fa-solid fa-magnifying-glass input__icon"></i><input id="searchPersonal" placeholder="Buscar personal..." /></div>
+        <div class="input"><i class="fa-solid fa-signal input__icon"></i><select id="fEstadoP"><option>Estado</option><option>En Mina</option><option>En Tránsito</option><option>Emergencia</option><option>Fuera</option></select></div>
+        <div class="input"><i class="fa-solid fa-location-dot input__icon"></i><select id="fUbicacionP"><option>Ubicación</option><option>Túnel 1</option><option>Túnel 2</option><option>Túnel 3</option></select></div>
+        <div class="input"><i class="fa-solid fa-clock input__icon"></i><select id="fTurnoP"><option>Turno</option><option>Mañana</option><option>Tarde</option><option>Noche</option></select></div>
+        <div class="u-flex u-gap-8 u-wrap">
+          <button class="btn btn--success btn--small" id="btnEntrada">Registrar entrada</button>
+          <button class="btn btn--small" id="btnExport">Exportar</button>
+        </div>
+      </section>
+
+      <!-- Tarjetas estadísticas -->
+      <section class="u-flex u-gap-16 u-wrap u-mb-16">
+        <article class="card" style="flex:1 1 220px;">
+          <h3>En Mina</h3>
+          <div class="kpi-card__value" style="color: var(--color-green)">245</div>
+        </article>
+        <article class="card" style="flex:1 1 220px;">
+          <h3>En Tránsito</h3>
+          <div class="kpi-card__value" style="color: var(--color-yellow)">11</div>
+        </article>
+        <article class="card" style="flex:1 1 220px;">
+          <h3>Emergencia</h3>
+          <div class="kpi-card__value" style="color: var(--color-red)">2</div>
+        </article>
+        <article class="card" style="flex:1 1 220px;">
+          <h3>Fuera</h3>
+          <div class="kpi-card__value">532</div>
+        </article>
+      </section>
+
+      <!-- Tabla + Panel lateral -->
+      <section class="u-flex u-gap-16 u-wrap">
+        <article class="card" style="flex: 1 1 62%; min-width: 340px;">
+          <h2>Personal</h2>
+          <div style="overflow:auto;">
+            <table class="table" id="tblPersonal">
+              <thead>
+                <tr>
+                  <th>Foto</th>
+                  <th>ID/Nombre</th>
+                  <th>Estado</th>
+                  <th>Ubicación</th>
+                  <th>Check-in</th>
+                  <th>Equipo</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 15 filas ejemplo -->
+                <tr class="row--ok">
+                  <td><img src="https://i.pravatar.cc/100?img=11" alt="" class="app-header__avatar" /></td>
+                  <td>#342 · Juan Pérez</td>
+                  <td><span class="table__state state--ok">En Mina</span></td>
+                  <td>Túnel 3 · Sector C</td>
+                  <td>30/10/2025 08:45</td>
+                  <td>Casco, Linterna</td>
+                  <td>
+                    <button class="btn btn--small" data-ver-mapa>Ver en mapa</button>
+                    <button class="btn btn--dark btn--small" data-contactar>Contactar</button>
+                  </td>
+                </tr>
+                <tr class="row--warn">
+                  <td><img src="https://i.pravatar.cc/100?img=15" alt="" class="app-header__avatar" /></td>
+                  <td>#298 · María Díaz</td>
+                  <td><span class="table__state state--warn">En Tránsito</span></td>
+                  <td>Túnel 2 · Sector A</td>
+                  <td>30/10/2025 09:10</td>
+                  <td>Casco, Chaleco</td>
+                  <td>
+                    <button class="btn btn--small" data-ver-mapa>Ver en mapa</button>
+                    <button class="btn btn--dark btn--small" data-contactar>Contactar</button>
+                  </td>
+                </tr>
+                <tr class="row--err">
+                  <td><img src="https://i.pravatar.cc/100?img=21" alt="" class="app-header__avatar" /></td>
+                  <td>#177 · Miguel Rojas</td>
+                  <td><span class="table__state state--err">Emergencia</span></td>
+                  <td>Túnel 1 · Sector C</td>
+                  <td>30/10/2025 09:20</td>
+                  <td>Casco</td>
+                  <td>
+                    <button class="btn btn--small" data-ver-mapa>Ver en mapa</button>
+                    <button class="btn btn--dark btn--small" data-contactar>Contactar</button>
+                  </td>
+                </tr>
+                <!-- Más filas generadas por JS para llegar a 15 -->
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="card" style="flex: 1 1 34%; min-width: 300px;" aria-label="Detalles de persona">
+          <h2>Detalles</h2>
+          <div id="detallePersona">
+            <div class="u-flex u-gap-16 u-mb-16">
+              <img src="https://i.pravatar.cc/100?img=11" alt="" class="avatar avatar--lg" />
+              <div>
+                <h3>Juan Pérez</h3>
+                <p>ID: 342 · Turno: Mañana</p>
+                <p>Ubicación: Túnel 3 · Sector C</p>
+                <button class="btn btn--small" data-ver-mapa>Ver en mapa</button>
+              </div>
+            </div>
+            <h3>Checklist de equipo</h3>
+            <ul>
+              <li><input type="checkbox" checked id="ck1"><label for="ck1"> Casco</label></li>
+              <li><input type="checkbox" checked id="ck2"><label for="ck2"> Linterna</label></li>
+              <li><input type="checkbox" id="ck3"><label for="ck3"> Respirador</label></li>
+            </ul>
+            <div class="u-mt-12 u-flex u-gap-8">
+              <button class="btn btn--dark btn--small" data-contactar><i class="fa-solid fa-phone"></i> Llamar</button>
+              <button class="btn btn--small" data-contactar><i class="fa-solid fa-message"></i> Mensaje</button>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="./dashboard.js" defer></script>
+  </body>
+  </html>

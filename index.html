@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minergy TIC – Iniciar sesión</title>
+    <meta name="description" content="Minergy TIC: Monitoreo de seguridad en minería subterránea" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-I2Q7mW5nJxw2Gq1lTzv1c4lMi6oQn3s7dJY2x9w0mQy0XgGmKQ5y6mBq+8q0Qx5FQq3Qj1v7H2b6o6c5lq2Q9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="login">
+      <section class="login__card">
+        <div class="login__brand">
+          <div class="login__logo"><i class="fa-solid fa-helmet-safety"></i></div>
+          <h1 class="login__title">Minergy TIC</h1>
+          <p class="u-mt-8">¡Bienvenido de nuevo!</p>
+        </div>
+
+        <form id="formLogin" class="form" autocomplete="on" novalidate>
+          <label class="sr-only" for="email">Correo electrónico</label>
+          <div class="input" role="group" aria-labelledby="email">
+            <i class="fa-solid fa-envelope input__icon" aria-hidden="true"></i>
+            <input id="email" name="email" type="email" placeholder="Correo electrónico" required />
+          </div>
+
+          <label class="sr-only" for="password">Contraseña</label>
+          <div class="input" role="group" aria-labelledby="password">
+            <i class="fa-solid fa-lock input__icon" aria-hidden="true"></i>
+            <input id="password" name="password" type="password" placeholder="Contraseña" minlength="6" required />
+            <button class="btn btn--ghost btn--small" type="button" id="togglePwd" aria-label="Mostrar u ocultar contraseña">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+
+          <button type="submit" class="btn btn--dark u-w-100">Iniciar sesión</button>
+
+          <div class="login__links" aria-live="polite">
+            <a href="#" id="forgotLink">¿Olvidaste tu contraseña?</a>
+            <a href="#" id="registerLink">Regístrate</a>
+          </div>
+        </form>
+
+        <div class="login__footer">© <span id="year"></span> Minergy TIC</div>
+      </section>
+    </main>
+
+    <!-- Modal: Registro -->
+    <div class="modal" id="modalRegistro" aria-hidden="true" role="dialog" aria-labelledby="tituloRegistro">
+      <div class="modal__dialog">
+        <div class="modal__header">
+          <h3 id="tituloRegistro">Crear cuenta</h3>
+          <button class="btn btn--ghost" data-close-modal aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal__body">
+          <form id="formRegister" class="form" novalidate>
+            <label class="sr-only" for="regNombre">Nombre</label>
+            <div class="input"><i class="fa-solid fa-user input__icon" aria-hidden="true"></i><input id="regNombre" placeholder="Nombre completo" required /></div>
+            <label class="sr-only" for="regEmail">Correo</label>
+            <div class="input"><i class="fa-solid fa-envelope input__icon" aria-hidden="true"></i><input id="regEmail" type="email" placeholder="Correo electrónico" required /></div>
+            <label class="sr-only" for="regPwd">Contraseña</label>
+            <div class="input"><i class="fa-solid fa-lock input__icon" aria-hidden="true"></i><input id="regPwd" type="password" placeholder="Contraseña (mín. 6)" minlength="6" required /></div>
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--ghost" data-close-modal>Cancelar</button>
+          <button class="btn btn--success" id="btnDoRegister">Crear cuenta</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Recuperar contraseña -->
+    <div class="modal" id="modalRecuperar" aria-hidden="true" role="dialog" aria-labelledby="tituloRecuperar">
+      <div class="modal__dialog">
+        <div class="modal__header">
+          <h3 id="tituloRecuperar">Recuperar contraseña</h3>
+          <button class="btn btn--ghost" data-close-modal aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal__body">
+          <form id="formForgot" class="form" novalidate>
+            <p>Ingresa tu correo y te enviaremos instrucciones.</p>
+            <label class="sr-only" for="fgEmail">Correo</label>
+            <div class="input"><i class="fa-solid fa-envelope input__icon" aria-hidden="true"></i><input id="fgEmail" type="email" placeholder="Correo electrónico" required /></div>
+          </form>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--ghost" data-close-modal>Cancelar</button>
+          <button class="btn btn--dark" id="btnDoForgot">Enviar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="./dashboard.js" defer></script>
+  </body>
+</html>

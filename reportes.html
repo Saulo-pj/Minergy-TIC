@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minergy TIC – Reportes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__inner u-between">
+        <div class="app-header__brand u-flex">
+          <button class="btn btn--ghost app-header__menu" id="btnMenu" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+          <div class="app-header__logo"><i class="fa-solid fa-helmet-safety"></i></div>
+          <div class="app-header__title">Minergy TIC</div>
+          <select class="app-header__select" aria-label="Seleccionar mina">
+            <option>Mina Volcan</option>
+            <option>Mina Cerro Azul</option>
+          </select>
+        </div>
+        <div class="app-header__actions u-flex">
+          <div class="app-header__icon" title="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge">3</span>
+          </div>
+          <img class="app-header__avatar" src="https://i.pravatar.cc/100?img=7" alt="Usuario" />
+          <div class="app-header__icon" title="Configuración"><a href="#" aria-label="Configuración"><i class="fa-solid fa-gear" style="color:#fff"></i></a></div>
+        </div>
+      </div>
+    </header>
+
+    <aside class="app-sidebar" id="sidebar" aria-label="Barra lateral de navegación">
+      <nav>
+        <ul class="app-sidebar__nav">
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./dashboard.html"><i class="app-sidebar__icon fa-solid fa-gauge"></i>Dashboard</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./alertas.html"><i class="app-sidebar__icon fa-solid fa-triangle-exclamation"></i>Alertas</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./mapa.html"><i class="app-sidebar__icon fa-solid fa-map"></i>Mapa</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link app-sidebar__link--active" href="./reportes.html"><i class="app-sidebar__icon fa-solid fa-chart-line"></i>Reportes</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-microchip"></i>Sensores</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./personal.html"><i class="app-sidebar__icon fa-solid fa-users"></i>Personal</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-gear"></i>Configuración</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-content">
+      <!-- Controles superiores -->
+      <section class="card u-mb-16 u-flex u-gap-12 u-wrap">
+        <div class="input"><i class="fa-regular fa-calendar input__icon"></i><input type="date" id="fromDate" /></div>
+        <div class="input"><i class="fa-regular fa-calendar input__icon"></i><input type="date" id="toDate" /></div>
+        <div class="u-flex u-gap-8 u-wrap">
+          <button class="btn btn--small" data-quick="today">Hoy</button>
+          <button class="btn btn--small" data-quick="week">Semana</button>
+          <button class="btn btn--small" data-quick="month">Mes</button>
+        </div>
+        <div class="input"><i class="fa-solid fa-list input__icon"></i>
+          <select id="tipoReporte">
+            <option>Tendencia de Gases</option>
+            <option>Alertas</option>
+            <option>Productividad</option>
+          </select>
+        </div>
+        <div class="u-flex u-gap-8 u-wrap">
+          <button class="btn btn--dark btn--small" id="btnPdf"><i class="fa-regular fa-file-pdf"></i> Descargar PDF</button>
+          <button class="btn btn--small" id="btnExcel"><i class="fa-regular fa-file-excel"></i> Descargar Excel</button>
+        </div>
+      </section>
+
+      <!-- Tarjetas resumen -->
+      <section class="u-flex u-gap-16 u-wrap u-mb-16">
+        <article class="card" style="flex:1 1 220px;">
+          <h3>Total Alertas</h3>
+          <div class="kpi-card__value">47</div>
+        </article>
+        <article class="card" style="flex:1 1 220px;">
+          <h3>Alertas Críticas</h3>
+          <div class="kpi-card__value" style="color: var(--color-red)">8</div>
+        </article>
+        <article class="card" style="flex:1 1 220px;">
+          <h3>Tiempo Respuesta</h3>
+          <div class="kpi-card__value">4.2 min</div>
+        </article>
+        <article class="card" style="flex:1 1 220px;">
+          <h3>Disponibilidad</h3>
+          <div class="kpi-card__value" style="color: var(--color-green)">99.3%</div>
+        </article>
+      </section>
+
+      <!-- Gráficos -->
+      <section class="card u-mb-16">
+        <h2>Tendencia de Gases</h2>
+        <canvas id="chartGasesMulti" height="120"></canvas>
+      </section>
+
+      <section class="u-flex u-gap-16 u-wrap u-mb-16">
+        <article class="card" style="flex:1 1 420px;">
+          <h3>Productividad por Turno</h3>
+          <canvas id="chartProdReport" height="120"></canvas>
+        </article>
+        <article class="card" style="flex:1 1 420px;">
+          <h3>Incidentes por Tipo</h3>
+          <canvas id="chartIncidentes" height="120"></canvas>
+        </article>
+      </section>
+
+      <!-- Tabla de datos -->
+      <section class="card u-mb-16">
+        <h2>Datos</h2>
+        <div class="input input--search u-mb-8"><i class="fa-solid fa-magnifying-glass input__icon"></i><input id="searchTableReport" placeholder="Buscar en tabla..." /></div>
+        <div style="overflow:auto;">
+          <table class="table" id="tblReportes">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Sensor</th>
+                <th>Tipo</th>
+                <th>Ubicación</th>
+                <th>Valor</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 10 filas -->
+              <tr class="row--ok"><td>30/10/2025 08:00</td><td>CO-17</td><td>CO</td><td>Túnel 3-B</td><td>22 ppm</td><td><span class="table__state state--ok">OK</span></td></tr>
+              <tr class="row--warn"><td>30/10/2025 08:10</td><td>VIB-05</td><td>Vibración</td><td>Túnel 2-A</td><td>9 mm/s</td><td><span class="table__state state--warn">Atención</span></td></tr>
+              <tr class="row--err"><td>30/10/2025 09:15</td><td>CO-17</td><td>CO</td><td>Túnel 3-B</td><td>45 ppm</td><td><span class="table__state state--err">Crítico</span></td></tr>
+              <tr class="row--ok"><td>30/10/2025 09:40</td><td>T-22</td><td>Temperatura</td><td>Túnel 2-B</td><td>28.1 °C</td><td><span class="table__state state--ok">OK</span></td></tr>
+              <tr class="row--ok"><td>30/10/2025 10:05</td><td>CO2-09</td><td>CO2</td><td>Nivel 1</td><td>760 ppm</td><td><span class="table__state state--ok">OK</span></td></tr>
+              <tr class="row--warn"><td>30/10/2025 10:25</td><td>CH4-03</td><td>CH4</td><td>Túnel 1-C</td><td>1.3 % vol</td><td><span class="table__state state--warn">Atención</span></td></tr>
+              <tr class="row--ok"><td>30/10/2025 10:50</td><td>T-07</td><td>Temperatura</td><td>Sector A</td><td>26.7 °C</td><td><span class="table__state state--ok">OK</span></td></tr>
+              <tr class="row--ok"><td>30/10/2025 11:15</td><td>CO2-14</td><td>CO2</td><td>Sector B</td><td>690 ppm</td><td><span class="table__state state--ok">OK</span></td></tr>
+              <tr class="row--warn"><td>30/10/2025 11:40</td><td>VIB-11</td><td>Vibración</td><td>Sector C</td><td>11 mm/s</td><td><span class="table__state state--warn">Atención</span></td></tr>
+              <tr class="row--ok"><td>30/10/2025 12:00</td><td>CO-05</td><td>CO</td><td>Túnel 1-A</td><td>18 ppm</td><td><span class="table__state state--ok">OK</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="./dashboard.js" defer></script>
+  </body>
+  </html>

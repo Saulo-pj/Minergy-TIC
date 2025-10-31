@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minergy TIC – Mapa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__inner u-between">
+        <div class="app-header__brand u-flex">
+          <button class="btn btn--ghost app-header__menu" id="btnMenu" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+          <div class="app-header__logo"><i class="fa-solid fa-helmet-safety"></i></div>
+          <div class="app-header__title">Minergy TIC</div>
+          <select class="app-header__select" aria-label="Seleccionar mina">
+            <option>Mina Volcan</option>
+            <option>Mina Cerro Azul</option>
+          </select>
+        </div>
+        <div class="app-header__actions u-flex">
+          <div class="app-header__icon" title="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge">3</span>
+          </div>
+          <img class="app-header__avatar" src="https://i.pravatar.cc/100?img=9" alt="Usuario" />
+          <div class="app-header__icon" title="Configuración"><a href="#" aria-label="Configuración"><i class="fa-solid fa-gear" style="color:#fff"></i></a></div>
+        </div>
+      </div>
+    </header>
+
+  <aside class="app-sidebar" id="sidebar" aria-label="Barra lateral de navegación">
+      <nav>
+        <ul class="app-sidebar__nav">
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./dashboard.html"><i class="app-sidebar__icon fa-solid fa-gauge"></i>Dashboard</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./alertas.html"><i class="app-sidebar__icon fa-solid fa-triangle-exclamation"></i>Alertas</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link app-sidebar__link--active" href="./mapa.html"><i class="app-sidebar__icon fa-solid fa-map"></i>Mapa</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./reportes.html"><i class="app-sidebar__icon fa-solid fa-chart-line"></i>Reportes</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-microchip"></i>Sensores</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./personal.html"><i class="app-sidebar__icon fa-solid fa-users"></i>Personal</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-gear"></i>Configuración</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="app-content">
+      <!-- Panel superior -->
+      <section class="card u-mb-16">
+        <div class="u-between u-wrap u-gap-16">
+          <div class="u-flex u-gap-12">
+            <div class="chip"><i class="fa-solid fa-user"></i> <strong id="countPeople">245</strong> personas en mina</div>
+          </div>
+          <div class="u-flex u-gap-12 u-wrap">
+            <div class="input"><i class="fa-solid fa-layer-group input__icon"></i><select id="fNivel"><option>Nivel</option><option>Nivel 1</option><option>Nivel 2</option><option>Nivel 3</option></select></div>
+            <div class="input"><i class="fa-solid fa-border-all input__icon"></i><select id="fSector"><option>Sector</option><option>A</option><option>B</option><option>C</option></select></div>
+            <div class="input"><i class="fa-solid fa-signal input__icon"></i><select id="fEstado"><option>Estado</option><option>Activo</option><option>Tránsito</option><option>Emergencia</option></select></div>
+            <div class="input input--search"><i class="fa-solid fa-magnifying-glass input__icon"></i><input id="searchMap" placeholder="Buscar persona..." /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Layout principal: mapa + panel lateral -->
+      <section class="u-flex u-gap-16 u-wrap">
+        <div class="card map-panel" style="flex: 1 1 60%; min-width: 320px;">
+          <h2>Plano 2D</h2>
+          <div class="map-panel__canvas" id="mapCanvas2">
+            <!-- túneles simples -->
+            <div style="position:absolute; top:60px; left:40px; right:40px; height:6px; background:#cfd8dc;"></div>
+            <div style="position:absolute; top:160px; left:40px; right:40px; height:6px; background:#cfd8dc;"></div>
+            <div style="position:absolute; top:260px; left:40px; right:40px; height:6px; background:#cfd8dc;"></div>
+            <!-- marcadores -->
+            <span class="marker marker--green" style="top:56px; left:120px;"></span>
+            <span class="marker marker--yellow" style="top:156px; left:280px;"></span>
+            <span class="marker marker--red" style="top:256px; left:420px;"></span>
+            <!-- zonas de peligro -->
+            <div style="position:absolute; top:230px; left:380px; width:120px; height:50px; background: rgba(231,76,60,0.25); border:1px dashed rgba(231,76,60,0.6);"></div>
+            <div class="map-panel__zoom">
+              <button class="btn" id="zoomIn2" aria-label="Acercar"><i class="fa-solid fa-plus"></i></button>
+              <button class="btn" id="zoomOut2" aria-label="Alejar"><i class="fa-solid fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="map-panel__legend">
+            <span class="legend__item"><i class="legend__dot legend__dot--green"></i> Activo</span>
+            <span class="legend__item"><i class="legend__dot legend__dot--yellow"></i> En tránsito</span>
+            <span class="legend__item"><i class="legend__dot legend__dot--red"></i> Emergencia</span>
+          </div>
+        </div>
+
+  <aside class="card" style="flex: 1 1 35%; min-width: 280px; max-height: 480px; overflow: auto;" aria-label="Panel lateral de personal">
+          <h2>Personal</h2>
+          <div id="listPersonal" class="u-flex u-gap-12 u-wrap">
+            <!-- Items generados por JS -->
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="./dashboard.js" defer></script>
+  </body>
+  </html>

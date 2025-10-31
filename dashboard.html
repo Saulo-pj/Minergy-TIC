@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minergy TIC – Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="app-header">
+      <div class="app-header__inner u-between">
+        <div class="app-header__brand u-flex">
+          <button class="btn btn--ghost app-header__menu" id="btnMenu" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+          <div class="app-header__logo"><i class="fa-solid fa-helmet-safety"></i></div>
+          <div class="app-header__title">Minergy TIC</div>
+          <select class="app-header__select u-mt-0 u-ml-0 u-gap-0 u-mb-0 u-flex" id="siteSelect" aria-label="Seleccionar mina">
+            <option>Mina Volcan</option>
+            <option>Mina Cerro Azul</option>
+          </select>
+        </div>
+        <div class="app-header__actions u-flex">
+          <div class="app-header__icon" id="notifBell" title="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge" aria-label="3 notificaciones">3</span>
+          </div>
+          <img class="app-header__avatar" src="https://i.pravatar.cc/100?img=12" alt="Usuario" />
+          <div class="app-header__icon" title="Configuración"><a href="#" aria-label="Configuración"><i class="fa-solid fa-gear" style="color:#fff"></i></a></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+  <aside class="app-sidebar" id="sidebar" aria-label="Barra lateral de navegación">
+      <nav>
+        <ul class="app-sidebar__nav">
+          <li class="app-sidebar__item"><a class="app-sidebar__link app-sidebar__link--active" href="./dashboard.html"><i class="app-sidebar__icon fa-solid fa-gauge"></i>Dashboard</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./alertas.html"><i class="app-sidebar__icon fa-solid fa-triangle-exclamation"></i>Alertas</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./mapa.html"><i class="app-sidebar__icon fa-solid fa-map"></i>Mapa</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./reportes.html"><i class="app-sidebar__icon fa-solid fa-chart-line"></i>Reportes</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-microchip"></i>Sensores</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./personal.html"><i class="app-sidebar__icon fa-solid fa-users"></i>Personal</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i class="app-sidebar__icon fa-solid fa-gear"></i>Configuración</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Contenido -->
+    <main class="app-content">
+      <!-- KPIs -->
+      <section class="kpi-grid u-mb-16">
+        <article class="card kpi-card">
+          <div class="kpi-card__icon kpi-card__icon--green"><i class="fa-solid fa-users"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpiPersonal">245</div>
+            <div class="kpi-card__meta">Personal Activo</div>
+          </div>
+        </article>
+        <article class="card kpi-card">
+          <div class="kpi-card__icon kpi-card__icon--red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpiAlertas">3</div>
+            <div class="kpi-card__meta">Alertas Activas</div>
+          </div>
+        </article>
+        <article class="card kpi-card">
+          <div class="kpi-card__icon kpi-card__icon--blue"><i class="fa-solid fa-microchip"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpiSensores">148/150</div>
+            <div class="kpi-card__meta">Sensores</div>
+          </div>
+        </article>
+        <article class="card kpi-card">
+          <div class="kpi-card__icon kpi-card__icon--green"><i class="fa-solid fa-chart-line"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpiProduct">+15%</div>
+            <div class="kpi-card__meta">Productividad</div>
+          </div>
+        </article>
+      </section>
+
+      <section class="split u-mb-16">
+        <!-- Alertas -->
+        <div class="card">
+          <h2 class="alerts__title">Alertas Activas (3)</h2>
+          <div class="alerts" id="alertList">
+            <article class="alert-card alert-card--critical card">
+              <h3>Crítica: Nivel CO</h3>
+              <p>Nivel CO: 45 ppm, Túnel 3-B</p>
+              <div class="alert-card__meta">Hace 5 min</div>
+              <div class="alert-card__actions u-flex u-gap-8">
+                <button class="btn btn--dark btn--small" data-open-modal="detalleAlerta" data-id="A-001">Ver detalles</button>
+                <button class="btn btn--warning btn--small" data-toast="Notificado a brigada">Notificar</button>
+                <button class="btn btn--success btn--small" data-resolver>Resolver</button>
+              </div>
+            </article>
+            <article class="alert-card alert-card--medium card">
+              <h3>Media: Vibración anormal</h3>
+              <p>Vibración anormal, Túnel 2-A</p>
+              <div class="alert-card__meta">Hace 15 min</div>
+              <div class="alert-card__actions u-flex u-gap-8">
+                <button class="btn btn--dark btn--small" data-open-modal="detalleAlerta" data-id="A-002">Ver detalles</button>
+                <button class="btn btn--warning btn--small" data-toast="Personal informado">Notificar</button>
+                <button class="btn btn--success btn--small" data-resolver>Resolver</button>
+              </div>
+            </article>
+            <article class="alert-card alert-card--info card">
+              <h3>Info: Mantenimiento</h3>
+              <p>Mantenimiento programado, Nivel 1</p>
+              <div class="alert-card__meta">Hoy</div>
+              <div class="alert-card__actions u-flex u-gap-8">
+                <button class="btn btn--dark btn--small" data-open-modal="detalleAlerta" data-id="A-003">Ver detalles</button>
+                <button class="btn btn--warning btn--small" data-toast="Programación enviada">Notificar</button>
+                <button class="btn btn--success btn--small" data-resolver>Resolver</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Mapa simulado -->
+        <div class="card map-panel">
+          <h2>Mapa en Tiempo Real</h2>
+          <div class="map-panel__canvas" id="mapCanvas">
+            <div class="map-panel__label">Niveles</div>
+            <!-- Etiquetas -->
+            <div class="chip" style="position:absolute; top:12px; left:60px;">Nivel 1</div>
+            <div class="chip" style="position:absolute; top:60px; left:60px;">Nivel 2</div>
+            <div class="chip" style="position:absolute; top:108px; left:60px;">Nivel 3</div>
+            <!-- Marcadores -->
+            <span class="marker marker--green" style="top:200px; left:140px;"></span>
+            <span class="marker marker--green" style="top:250px; left:320px;"></span>
+            <span class="marker marker--red" style="top:160px; left:260px;"></span>
+            <!-- Zonas -->
+            <div style="position:absolute; top:140px; left:230px; width:80px; height:50px; background: rgba(231,76,60,0.2); border: 1px dashed rgba(231,76,60,.6); border-radius: 6px;"></div>
+            <!-- Controles de zoom -->
+            <div class="map-panel__zoom">
+              <button class="btn" id="zoomIn" aria-label="Acercar"><i class="fa-solid fa-plus"></i></button>
+              <button class="btn" id="zoomOut" aria-label="Alejar"><i class="fa-solid fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="map-panel__legend">
+            <span class="legend__item"><i class="legend__dot legend__dot--green"></i> Personal</span>
+            <span class="legend__item"><i class="legend__dot legend__dot--red"></i> Alertas</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gráficos -->
+      <section class="charts-grid u-mb-16">
+        <article class="card">
+          <h2>Niveles de Gases - 24h</h2>
+          <canvas id="chartGases" height="120"></canvas>
+        </article>
+        <article class="card">
+          <h2>Productividad por Turno</h2>
+          <canvas id="chartProductividad" height="120"></canvas>
+        </article>
+      </section>
+    </main>
+
+    <!-- Modal Detalle Alerta -->
+    <div class="modal" id="detalleAlerta">
+      <div class="modal__dialog">
+        <div class="modal__header">
+          <h3>Detalle de Alerta</h3>
+          <button class="btn btn--ghost" data-close-modal aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal__body" id="detalleAlertaBody">
+          <!-- contenido dinámico -->
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--success" data-close-modal>Entendido</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="./dashboard.js" defer></script>
+  </body>
+  </html>
