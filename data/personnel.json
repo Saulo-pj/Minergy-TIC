@@ -1,0 +1,16 @@
+[
+  { "id": 1, "nombre": "Juan Pérez", "ub": "Túnel 3 · C", "check": "09:10", "img": 11, "estado": "En Mina", "equipo": "Casco, Linterna", "status": "ok" },
+  { "id": 2, "nombre": "María Díaz", "ub": "Túnel 2 · A", "check": "09:05", "img": 15, "estado": "En Mina", "equipo": "Casco", "status": "ok" },
+  { "id": 3, "nombre": "Luis Gómez", "ub": "Nivel 1 · B", "check": "08:55", "img": 23, "estado": "En Mina", "equipo": "Casco, Linterna", "status": "ok" },
+  { "id": 4, "nombre": "Karen Ramírez", "ub": "Nivel 1 · A", "check": "08:40", "img": 31, "estado": "En Mina", "equipo": "Casco", "status": "ok" },
+  { "id": 5, "nombre": "Fernando Ortega", "ub": "Túnel 1 · C", "check": "09:20", "img": 27, "estado": "En Tránsito", "equipo": "Chaleco", "status": "warn" },
+  { "id": 6, "nombre": "Camila Soto", "ub": "—", "check": "29/10/2025 19:20", "img": 33, "estado": "Fuera", "equipo": "—", "status": "ok" },
+  { "id": 7, "nombre": "Diego León", "ub": "Túnel 2 · B", "check": "30/10/2025 08:55", "img": 37, "estado": "En Mina", "equipo": "Casco, Linterna", "status": "ok" },
+  { "id": 8, "nombre": "Paula Viera", "ub": "—", "check": "29/10/2025 21:05", "img": 42, "estado": "Fuera", "equipo": "—", "status": "ok" },
+  { "id": 9, "nombre": "Raúl Méndez", "ub": "Nivel 1 · C", "check": "30/10/2025 07:50", "img": 45, "estado": "En Mina", "equipo": "Casco", "status": "ok" },
+  { "id": 10, "nombre": "Sofía Reyes", "ub": "Túnel 3 · A", "check": "30/10/2025 09:12", "img": 49, "estado": "En Tránsito", "equipo": "Chaleco", "status": "warn" },
+  { "id": 11, "nombre": "Pablo Núñez", "ub": "Túnel 2 · C", "check": "30/10/2025 09:18", "img": 12, "estado": "Emergencia", "equipo": "Casco", "status": "err" },
+  { "id": 12, "nombre": "Ana Ríos", "ub": "Túnel 2 · A", "check": "30/10/2025 08:42", "img": 14, "estado": "En Mina", "equipo": "Casco", "status": "ok" },
+  { "id": 13, "nombre": "José Torres", "ub": "—", "check": "29/10/2025 20:31", "img": 22, "estado": "Fuera", "equipo": "—", "status": "ok" },
+  { "id": 14, "nombre": "Laura Peña", "ub": "Túnel 3 · B", "check": "30/10/2025 09:02", "img": 28, "estado": "En Mina", "equipo": "Casco, Linterna", "status": "ok" }
+]

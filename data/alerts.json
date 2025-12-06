@@ -1,0 +1,38 @@
+[
+    {
+        "id": "A-001",
+        "severity": "critical",
+        "title": "Crítica: Nivel CO",
+        "description": "Nivel CO: 45 ppm, Túnel 3-B",
+        "time": "Hace 5 min",
+        "details": {
+            "type": "Alerta de seguridad",
+            "location": "Túnel 3-B · Sector C",
+            "sensor": "CO-17 · 45 ppm"
+        }
+    },
+    {
+        "id": "A-002",
+        "severity": "medium",
+        "title": "Media: Vibración anormal",
+        "description": "Vibración anormal, Túnel 2-A",
+        "time": "Hace 15 min",
+        "details": {
+            "type": "Alerta mecánica",
+            "location": "Túnel 2-A · Sector Norte",
+            "sensor": "VIB-04 · 12mm/s"
+        }
+    },
+    {
+        "id": "A-003",
+        "severity": "info",
+        "title": "Info: Mantenimiento",
+        "description": "Mantenimiento programado, Nivel 1",
+        "time": "Hoy",
+        "details": {
+            "type": "Mantenimiento",
+            "location": "Nivel 1 · General",
+            "sensor": "N/A"
+        }
+    }
+]

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minergy TIC – Configuración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="./img/logo.png" type="image/png" />
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="app-header__inner u-between">
+      <div class="app-header__brand u-flex u-gap-12 u-flex-center">
+        <button id="btnMenu" class="app-header__menu" type="button" aria-label="Abrir menú" aria-controls="sidebar"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="app-header__logo" aria-hidden="true"><i class="fa-solid fa-helmet-safety"></i></div>
+        <div>
+          <h1 class="app-header__title">Minergy TIC</h1>
+          <small>Centro de control · Mina Volcán - Ticlio</small>
+        </div>
+      </div>
+      <div class="u-flex u-gap-12 u-wrap">
+        <div class="app-header__select">
+          <label class="sr-only" for="siteSelectorConfig">Seleccionar sede</label>
+          <select id="siteSelectorConfig" aria-label="Seleccionar sede">
+            <option value="volcan">Mina Volcán · Ticlio</option>
+            <option value="lima">Oficina Lima</option>
+            <option value="central">Sede Central</option>
+          </select>
+          <i class="fa-solid fa-chevron-down app-header__select-icon" aria-hidden="true"></i>
+        </div>
+        <div class="app-header__actions u-flex u-gap-12">
+          <div class="app-header__icon" title="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge">3</span>
+          </div>
+          <img class="app-header__avatar" src="https://i.pravatar.cc/100?img=14" alt="Usuario" data-default-avatar="https://i.pravatar.cc/100?img=14" />
+          <div class="app-header__icon" title="Configuración">
+            <a href="./configuracion.html" aria-label="Configuración"><i class="fa-solid fa-gear"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="app-sidebar" id="sidebar" aria-label="Barra lateral de navegación">
+    <nav>
+      <ul class="app-sidebar__nav">
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./dashboard.html"><i
+              class="app-sidebar__icon fa-solid fa-gauge"></i>Dashboard</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./alertas.html"><i
+              class="app-sidebar__icon fa-solid fa-triangle-exclamation"></i>Alertas</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./mapa.html"><i
+              class="app-sidebar__icon fa-solid fa-map"></i>Mapa</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./reportes.html"><i
+              class="app-sidebar__icon fa-solid fa-chart-line"></i>Reportes</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i
+              class="app-sidebar__icon fa-solid fa-microchip"></i>Sensores</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./personal.html"><i
+              class="app-sidebar__icon fa-solid fa-users"></i>Personal</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link app-sidebar__link--active" href="./configuracion.html"><i
+              class="app-sidebar__icon fa-solid fa-gear"></i>Configuración</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <main class="app-content">
+    <section class="settings-grid u-mb-16">
+      <article class="card">
+        <div class="u-between u-gap-8">
+          <div>
+            <h2>Idioma y región</h2>
+            <small>Selecciona el idioma base y el huso horario que usarán los paneles.</small>
+          </div>
+        </div>
+        <div class="input">
+          <i class="fa-solid fa-language input__icon"></i>
+          <select>
+            <option value="es">Español (predeterminado)</option>
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+          </select>
+        </div>
+        <div class="input">
+          <i class="fa-solid fa-clock input__icon"></i>
+          <select>
+            <option value="gmt-5">GMT-5 · Lima / Ticlio</option>
+            <option value="gmt-4">GMT-4 · Lima +1</option>
+            <option value="gmt-6">GMT-6 · Lima -1</option>
+          </select>
+        </div>
+        <div class="input">
+          <i class="fa-solid fa-location-dot input__icon"></i>
+          <select>
+            <option value="volcan">Mina Volcán · Ticlio</option>
+            <option value="lima">Sede Lima</option>
+            <option value="central">Sede Central</option>
+          </select>
+        </div>
+      </article>
+      <article class="card">
+        <h2>Alertas y notificaciones</h2>
+        <small>Define cómo y cuándo llegarán los avisos críticos al equipo.</small>
+        <div class="u-flex u-wrap u-gap-12 u-mt-16">
+          <label class="checkbox-field"><input type="checkbox" checked />Alertas críticas (SMS + App)</label>
+          <label class="checkbox-field"><input type="checkbox" checked />Resumen diario por correo</label>
+          <label class="checkbox-field"><input type="checkbox" />Notificaciones de mantenimiento</label>
+        </div>
+        <div class="input">
+          <i class="fa-solid fa-bell input__icon"></i>
+          <select>
+            <option value="critical">Solo prioridad crítica</option>
+            <option value="all">Todas las alertas</option>
+            <option value="custom">Personalizar niveles</option>
+          </select>
+        </div>
+        <div class="input">
+          <i class="fa-solid fa-phone input__icon"></i>
+          <select>
+            <option value="sms-email">SMS + Email</option>
+            <option value="app">Solo App</option>
+            <option value="none">Silencio nocturno</option>
+          </select>
+        </div>
+      </article>
+    </section>
+
+    <section class="settings-grid">
+      <article class="card">
+        <h2>Seguridad y accesos</h2>
+        <small>Controla sesiones, bloqueos y políticas de autenticación.</small>
+        <div class="input">
+          <i class="fa-solid fa-lock input__icon"></i>
+          <input type="password" placeholder="Actualizar contraseña" />
+        </div>
+        <div class="input">
+          <i class="fa-solid fa-shield-halved input__icon"></i>
+          <select>
+            <option>Autenticación biométrica (habilitada)</option>
+            <option>Bloqueo tras 5 min sin actividad</option>
+            <option>Validación multi-factor manual</option>
+          </select>
+        </div>
+        <div class="u-flex u-gap-8 u-wrap u-mt-12">
+          <button class="btn btn--small" type="button">Ver sesiones activas</button>
+          <button class="btn btn--ghost btn--small" type="button">Revocar tokens</button>
+        </div>
+      </article>
+      <article class="card">
+        <h2>Integraciones operativas</h2>
+        <small>Sincroniza sensores, mapas y reportes de acuerdo a tus preferencias.</small>
+        <div class="input">
+          <i class="fa-solid fa-network-wired input__icon"></i>
+          <select>
+            <option value="sync-classic">Sincronización constante (cada 5 min)</option>
+            <option value="event-driven">Eventos críticos</option>
+            <option value="manual">Exportar manualmente</option>
+          </select>
+        </div>
+        <div class="input">
+          <i class="fa-solid fa-envelope input__icon"></i>
+          <input type="email" placeholder="Email de contacto para reportes" />
+        </div>
+        <div class="input">
+          <i class="fa-solid fa-cloud-arrow-up input__icon"></i>
+          <select>
+            <option>Enviar reportes automáticos (2 veces/día)</option>
+            <option>Solo con alertas activas</option>
+            <option>No enviar reportes</option>
+          </select>
+        </div>
+      </article>
+    </section>
+
+    <section class="card u-mt-16">
+      <div class="u-between u-wrap u-gap-12">
+        <div>
+          <h2>Guardar preferencia</h2>
+          <small>Aplica estas preferencias a todos los módulos del sistema.</small>
+        </div>
+        <div class="u-flex u-gap-8 u-wrap">
+          <button class="btn btn--ghost btn--small" type="button">Restaurar valores por defecto</button>
+          <button class="btn btn--success" type="button">Guardar cambios</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="./js/profile-header.js" defer></script>
+  <script src="./dashboard.js" defer></script>
+</body>
+
+</html>

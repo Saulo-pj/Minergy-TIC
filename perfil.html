@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minergy TIC – Perfil trabajador</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="./img/logo.png" type="image/png" />
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="app-header__inner u-between">
+      <div class="app-header__brand u-flex u-gap-12 u-flex-center">
+        <button id="btnMenu" class="app-header__menu" type="button" aria-label="Abrir menú" aria-controls="sidebar"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="app-header__logo" aria-hidden="true"><i class="fa-solid fa-helmet-safety"></i></div>
+        <div>
+          <h1 class="app-header__title">Minergy TIC</h1>
+          <small>Centro de control · Mina Volcán - Ticlio</small>
+        </div>
+      </div>
+      <div class="u-flex u-gap-12 u-wrap">
+        <div class="app-header__select">
+          <label class="sr-only" for="siteSelectorPerfil">Seleccionar sede</label>
+          <select id="siteSelectorPerfil" aria-label="Seleccionar sede">
+            <option value="volcan">Mina Volcán · Ticlio</option>
+            <option value="lima">Oficina Lima</option>
+            <option value="central">Sede Central</option>
+          </select>
+          <i class="fa-solid fa-chevron-down app-header__select-icon" aria-hidden="true"></i>
+        </div>
+        <div class="app-header__actions u-flex u-gap-12">
+          <div class="app-header__icon" title="Notificaciones">
+            <i class="fa-regular fa-bell"></i>
+            <span class="badge">3</span>
+          </div>
+          <img class="app-header__avatar" src="https://i.pravatar.cc/100?img=11" alt="Usuario" data-default-avatar="https://i.pravatar.cc/100?img=11" />
+          <div class="app-header__icon" title="Configuración"><a href="./configuracion.html" aria-label="Configuración"><i
+                class="fa-solid fa-gear"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="app-sidebar" id="sidebar" aria-label="Barra lateral de navegación">
+    <nav>
+      <ul class="app-sidebar__nav">
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./dashboard.html"><i
+              class="app-sidebar__icon fa-solid fa-gauge"></i>Dashboard</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./alertas.html"><i
+              class="app-sidebar__icon fa-solid fa-triangle-exclamation"></i>Alertas</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./mapa.html"><i
+              class="app-sidebar__icon fa-solid fa-map"></i>Mapa</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="./reportes.html"><i
+              class="app-sidebar__icon fa-solid fa-chart-line"></i>Reportes</a></li>
+        <li class="app-sidebar__item"><a class="app-sidebar__link" href="#"><i
+              class="app-sidebar__icon fa-solid fa-microchip"></i>Sensores</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link app-sidebar__link--active" href="./personal.html"><i
+              class="app-sidebar__icon fa-solid fa-users"></i>Personal</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./configuracion.html"><i
+              class="app-sidebar__icon fa-solid fa-gear"></i>Configuración</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <main class="app-content">
+    <section class="profile-hero card u-mb-16">
+      <div class="profile-hero__body u-flex u-gap-16 u-wrap">
+        <img src="https://i.pravatar.cc/200?img=11" alt="Perfil" class="avatar avatar--xl" />
+        <div>
+          <small id="profileMeta" class="text-muted">ID 342 · Turno Mañana</small>
+          <h1 id="profileName" class="app-header__title" style="font-size: 2rem;">Juan Pérez</h1>
+          <p id="profileLocation">Mina Volcán · Ticlio · Sector C · Túnel 3 · Turno: Mañana</p>
+          <div class="u-flex u-gap-8 u-wrap">
+            <span class="chip" id="statusChip"><i class="fa-solid fa-signal"></i> En Mina</span>
+            <span class="chip chip--ghost" id="equipmentChip"><i class="fa-solid fa-hat-hard"></i> Equipo completo</span>
+          </div>
+        </div>
+        <div class="u-flex u-gap-8 u-mt-16">
+          <button class="btn btn--success">Guardar cambios</button>
+          <button class="btn btn--ghost">Descartar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card profile-grid">
+      <div>
+        <h2>Resumen del trabajador</h2>
+        <ul class="profile-list">
+          <li><strong>Correo:</strong> <span id="profileEmail">juan.perez@minergy.com</span></li>
+          <li><strong>Teléfono:</strong> <span id="profilePhone">+51 987 654 321</span></li>
+          <li><strong>Estado:</strong> <span id="profileStatusText">Operativo · En Mina</span></li>
+          <li><strong>Ubicación:</strong> <span id="profileUbication">Túnel 3 · Sector C · Nivel 1</span></li>
+          <li><strong>Turno:</strong> <span id="profileTurnoText">Mañana</span></li>
+          <li><strong>Supervisor:</strong> <span id="profileSupervisor">Ing. Laura Medina</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Editar perfil</h2>
+        <form class="form-grid" autocomplete="off">
+          <label>Nombre completo<input id="inputNombre" type="text" value="Juan Pérez" /></label>
+          <label>Cédula / ID<input id="inputId" type="text" value="342" /></label>
+          <label>Turno<select id="inputTurno">
+              <option>Mañana</option>
+              <option>Tarde</option>
+              <option>Noche</option>
+            </select></label>
+          <label>Ubicación<input id="inputUbicacion" type="text" value="Túnel 3 · Sector C" /></label>
+          <label>Estado<select id="inputEstado">
+              <option>En Mina</option>
+              <option>En Tránsito</option>
+              <option>Emergencia</option>
+              <option>Fuera</option>
+            </select></label>
+          <label>Equipo asignado<input id="inputEquipo" type="text" value="Casco, Linterna" /></label>
+          <label>Correo<input id="inputCorreo" type="email" value="juan.perez@minergy.com" /></label>
+          <label>Teléfono<input id="inputTelefono" type="tel" value="+51 987 654 321" /></label>
+          <label>Notas<textarea id="inputNotas" rows="3">Última revisión preventiva: 02/12/2025</textarea></label>
+        </form>
+      </div>
+    </section>
+
+    <section class="card u-mt-16">
+      <h2>Registros recientes</h2>
+      <div class="timeline">
+        <div class="timeline__item">
+          <span class="timeline__time">09:40</span>
+          <p>Entrada validada en cabina principal.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">08:50</span>
+          <p>Checklist de seguridad completo y aprobado.</p>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__time">08:00</span>
+          <p>Cambio de turno con María Díaz en Sector B.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script>
+    (() => {
+      const defaultProfile = {
+        id: '342',
+        name: 'Juan Pérez',
+        turno: 'Mañana',
+        location: 'Mina Volcán · Ticlio · Sector C · Túnel 3 · Turno: Mañana',
+        status: 'En Mina',
+        email: 'juan.perez@minergy.com',
+        phone: '+51 987 654 321',
+        supervisor: 'Ing. Laura Medina',
+        equipment: 'Casco, Linterna',
+        notes: 'Última revisión preventiva: 02/12/2025'
+      };
+
+      const profile = (() => {
+        try {
+          return JSON.parse(localStorage.getItem('selectedWorker')) || defaultProfile;
+        } catch (error) {
+          return defaultProfile;
+        }
+      })();
+
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+      };
+
+      setText('profileMeta', `ID ${profile.id} · Turno ${profile.turno}`);
+      setText('profileName', profile.name);
+      setText('profileLocation', profile.location);
+      setText('statusChip', `\u25CF ${profile.status}`);
+      setText('equipmentChip', `\u25CF ${profile.equipment}`);
+      setText('profileEmail', profile.email);
+      setText('profilePhone', profile.phone);
+      setText('profileStatusText', `Estado · ${profile.status}`);
+      setText('profileUbication', profile.location.split(' · ').slice(0, -1).join(' · '));
+      setText('profileTurnoText', profile.turno);
+      setText('profileSupervisor', profile.supervisor);
+
+      const setInput = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.value = value;
+      };
+
+      setInput('inputNombre', profile.name);
+      setInput('inputId', profile.id);
+      setInput('inputTurno', profile.turno);
+      setInput('inputUbicacion', profile.location);
+      setInput('inputEstado', profile.status);
+      setInput('inputEquipo', profile.equipment);
+      setInput('inputCorreo', profile.email);
+      setInput('inputTelefono', profile.phone);
+      setInput('inputNotas', profile.notes);
+    })();
+  </script>
+  <script src="./js/profile-header.js" defer></script>
+</body>
+
+</html>

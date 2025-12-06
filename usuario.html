@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minergy TIC – Usuario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./img/logo.png" type="image/png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__inner u-between">
+        <div class="app-header__brand u-flex u-gap-12 u-flex-center">
+          <button class="btn btn--ghost app-header__menu" id="btnMenu" type="button" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="app-header__logo" aria-hidden="true"><i class="fa-solid fa-helmet-safety"></i></div>
+          <div>
+            <h1 class="app-header__title">Minergy TIC</h1>
+            <small>Vista de solo lectura · Usuario</small>
+          </div>
+        </div>
+        <div class="u-flex u-gap-12 u-wrap">
+          <div class="app-header__select">
+            <label class="sr-only" for="siteSelectorUsuario">Seleccionar sede</label>
+            <select id="siteSelectorUsuario" aria-label="Seleccionar sede">
+              <option value="volcan">Mina Volcán · Ticlio</option>
+              <option value="lima">Oficina Lima</option>
+              <option value="central">Sede Central</option>
+            </select>
+            <i class="fa-solid fa-chevron-down app-header__select-icon" aria-hidden="true"></i>
+          </div>
+          <div class="app-header__actions u-flex u-gap-12">
+            <div class="app-header__icon" title="Notificaciones">
+              <i class="fa-regular fa-bell"></i>
+              <span class="badge">3</span>
+            </div>
+            <img class="app-header__avatar" src="https://i.pravatar.cc/100?img=30" alt="Usuario" data-default-avatar="https://i.pravatar.cc/100?img=30" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <aside class="app-sidebar" id="sidebar" aria-label="Barra lateral de navegación">
+      <nav>
+        <ul class="app-sidebar__nav">
+          <li class="app-sidebar__item"><a class="app-sidebar__link app-sidebar__link--active" href="./usuario.html"><i class="app-sidebar__icon fa-solid fa-gauge"></i>Inicio (Lectura)</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./alertas.html"><i class="app-sidebar__icon fa-solid fa-triangle-exclamation"></i>Alertas</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./mapa.html"><i class="app-sidebar__icon fa-solid fa-map"></i>Mapa</a></li>
+          <li class="app-sidebar__item"><a class="app-sidebar__link" href="./reportes.html"><i class="app-sidebar__icon fa-solid fa-chart-line"></i>Reportes</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+    <main class="app-content">
+      <section class="card profile-hero u-mb-16">
+        <div>
+          <span class="chip chip--ghost" id="roleBadge">Usuario · Solo lectura</span>
+          <h2 class="profile-hero__title" id="userGreeting">Hola</h2>
+          <p class="small">Tu rol tiene acceso de seguimiento para ver alertas, mapas y reportes sin posibilidad de editar contenidos estratégicos.</p>
+        </div>
+        <div class="u-flex u-gap-16 profile-hero__meta">
+          <div>
+            <span class="small">Último acceso</span>
+            <strong id="userLastAccess">—</strong>
+          </div>
+          <div>
+            <span class="small">Alertas visibles</span>
+            <strong>3</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="kpi-grid u-mb-16">
+        <article class="card kpi-card">
+          <div class="kpi-card__icon kpi-card__icon--green"><i class="fa-solid fa-bullseye"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpiPersonal">245</div>
+            <div class="kpi-card__meta">Personal activo</div>
+          </div>
+        </article>
+        <article class="card kpi-card">
+          <div class="kpi-card__icon kpi-card__icon--red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpiAlertas">3</div>
+            <div class="kpi-card__meta">Alertas críticas</div>
+          </div>
+        </article>
+        <article class="card kpi-card">
+          <div class="kpi-card__icon kpi-card__icon--blue"><i class="fa-solid fa-map-location-dot"></i></div>
+          <div>
+            <div class="kpi-card__value" id="kpiSensores">148/150</div>
+            <div class="kpi-card__meta">Sensores activos</div>
+          </div>
+        </article>
+      </section>
+
+      <section class="card u-mb-16">
+        <div class="u-between u-flex u-gap-8 u-wrap">
+          <h2>Alertas visibles</h2>
+          <small>Solo lectura</small>
+        </div>
+        <div class="alerts user-alerts">
+          <article class="alert-card alert-card--critical card">
+            <h3>#A-104 · CO elevado</h3>
+            <p class="small">Sensor CO-17 · Túnel 3 · Sector C · 45 ppm</p>
+            <div class="alert-card__meta">Última actualización · hace 5 min</div>
+          </article>
+          <article class="alert-card alert-card--medium card">
+            <h3>#A-097 · Vibración</h3>
+            <p class="small">S-VIB-05 · Túnel 2 · Sector A · 12 mm/s</p>
+            <div class="alert-card__meta">Última actualización · hace 12 min</div>
+          </article>
+          <article class="alert-card alert-card--info card">
+            <h3>#A-083 · Mantenimiento</h3>
+            <p class="small">Nivel 1 · Ventiladores · Programado para 14:00</p>
+            <div class="alert-card__meta">Programado · hoy 14:00</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="split u-mb-16">
+        <div class="card map-panel">
+          <div class="u-between u-flex-center">
+            <div>
+              <h2>Mapa conceptual</h2>
+              <small>Solo para referencia</small>
+            </div>
+            <span class="chip chip--ghost"><i class="fa-solid fa-eye"></i> Visibilidad pública</span>
+          </div>
+          <div class="map-panel__canvas" id="mapCanvas" role="region" aria-label="Mapa simplificado">
+            <div class="u-flex u-flex-col u-gap-6">
+              <strong class="small">Sectores activos</strong>
+              <span class="small">Túnel 3 · Sector C · <i class="fa-solid fa-circle" style="color:#1abc9c"></i> Operaciones</span>
+              <span class="small">Túnel 2 · Sector A · <i class="fa-solid fa-circle" style="color:#f59e0b"></i> Tránsito</span>
+              <span class="small">Nivel 1 · Sector B · <i class="fa-solid fa-circle" style="color:#ef4444"></i> Alerta menor</span>
+            </div>
+          </div>
+          <div class="map-panel__legend">
+            <span class="legend__item"><i class="legend__dot legend__dot--green"></i> Personal</span>
+            <span class="legend__item"><i class="legend__dot legend__dot--red"></i> Alertas</span>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Personal destacado</h2>
+          <ul class="u-list-reset">
+            <li class="u-flex u-between u-gap-12">
+              <div>
+                <strong>Juan Pérez</strong>
+                <p class="small">Túnel 3 · Sector C · Último check 09:12</p>
+                <p class="small">Supervisor: Ing. Laura Medina</p>
+              </div>
+              <span class="chip chip--ghost"><i class="fa-solid fa-signal"></i> En mina</span>
+            </li>
+            <li class="u-flex u-between u-gap-12">
+              <div>
+                <strong>María Díaz</strong>
+                <p class="small">Túnel 2 · Sector A · Último check 09:05</p>
+                <p class="small">Equipo: Casco, Chaleco</p>
+              </div>
+              <span class="chip chip--ghost"><i class="fa-solid fa-route"></i> En tránsito</span>
+            </li>
+            <li class="u-flex u-between u-gap-12">
+              <div>
+                <strong>Laura Peña</strong>
+                <p class="small">Túnel 3 · Sector B · Último check 08:58</p>
+                <p class="small">Cargo: Líder de turno</p>
+              </div>
+              <span class="chip chip--ghost"><i class="fa-solid fa-hammer"></i> Mantenimiento</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card u-mb-16">
+        <div class="u-between u-flex u-gap-12 u-wrap">
+          <h2>Registro de eventos recientes</h2>
+          <small>Solo lectura</small>
+        </div>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div>
+              <strong>#A-104 · CO elevado</strong>
+              <p class="small">Sensor CO-17 · Túnel 3-B · Última actualización hace 5 min</p>
+            </div>
+            <span class="small text-muted">nuevas notificaciones</span>
+          </div>
+          <div class="timeline__item">
+            <div>
+              <strong>#A-083 · Mantenimiento</strong>
+              <p class="small">Ventiladores Nivel 1 · Programado 14:00</p>
+            </div>
+            <span class="small text-muted">planificado</span>
+          </div>
+          <div class="timeline__item">
+            <div>
+              <strong>Informe de jornada</strong>
+              <p class="small">18:00 · 245 trabajadores verificados · Sin incidencias mayores</p>
+            </div>
+            <span class="small text-muted">cerrado</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="charts-grid u-mb-16">
+        <article class="card">
+          <h2>Gases últimos 7 días</h2>
+          <canvas id="chartGasesMulti" height="120"></canvas>
+        </article>
+        <article class="card">
+          <h2>Productividad por turno</h2>
+          <canvas id="chartProdReport" height="120"></canvas>
+        </article>
+        <article class="card">
+          <h2>Incidentes por tipo</h2>
+          <canvas id="chartIncidentes" height="120"></canvas>
+        </article>
+      </section>
+    </main>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script>
+      (() => {
+        const stored = sessionStorage.getItem('currentUser');
+        const user = stored ? JSON.parse(stored) : null;
+        if(!user){ window.location.href = './index.html'; return; }
+        if(user.role !== 'user'){
+          window.location.href = './dashboard.html';
+          return;
+        }
+        const now = new Date().toLocaleString('es-PE', { hour12: false });
+        document.getElementById('userGreeting').textContent = `Hola ${user.name}`;
+        document.getElementById('userLastAccess').textContent = now;
+      })();
+    </script>
+    <script src="./js/profile-header.js" defer></script>
+    <script src="./dashboard.js" defer></script>
+  </body>
+</html>
